@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EverythingStella Ltd — Build Wealth with Wisdom</title>
+    <meta
+      name="description"
+      content="EverythingStella is a personal finance and growth platform helping individuals and businesses across Africa and the diaspora build wealth with wisdom."
+    />
+    <!-- Fonts & Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] },
+            colors: {
+              /**  brand **/
+              brand: {
+                dark: "#062c3a", // primary deep teal
+                darkHover: "#062c3a", // hover variant (8% darker)
+                peach: "#f7dcbe", // accent peach
+              },
+              /** neutrals & utility **/
+              neutral: {
+                wash: "#f9f9f9", // light section alt
+                border: "#062c3a0d", // 5% opacity border of brand-dark
+              },
+            },
+            boxShadow: {
+              soft: "0 6px 24px rgba(0,0,0,0.08)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .noise {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.06;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.3'%3E%3Ccircle cx='1' cy='1' r='1'/%3E%3Ccircle cx='30' cy='12' r='1'/%3E%3Ccircle cx='45' cy='45' r='1'/%3E%3Ccircle cx='12' cy='30' r='1'/%3E%3C/g%3E%3C/svg%3E");
+        background-size: 180px 180px;
+      }
+      .img-cover {
+        object-fit: cover;
+        object-position: center;
+      }
+    </style>
+    <!-- GSAP for subtle animations -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      defer
+    ></script>
+  </head>
+  <body class="bg-white text-brand-dark antialiased tracking-tight">
+    <!-- Header -->
+    <header class="fixed top-0 inset-x-0 z-50">
+      <div
+        id="nav"
+        class="mx-auto max-w-7xl px-6 py-4 rounded-b-2xl transition-all duration-300"
+      >
+        <nav class="flex items-center justify-between">
+          <a href="#" class="flex items-center gap-2 group">
+            <div
+              class="h-9 w-9 rounded-xl bg-brand-peach/20 flex items-center justify-center ring-1 ring-brand-peach/40 group-hover:ring-brand-peach transition"
+            >
+              <div
+                class="h-9 w-9 rounded-xl bg-none flex items-center justify-center ring-1 ring-brand-peach/40 group-hover:ring-brand-peach transition"
+              >
+                <img
+                  src="./stella_logo-2.svg"
+                  alt="Entrepreneur planning cashflow"
+                  class="w-full h-full img-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+            <span class="font-semibold text-lg">EverythingStella</span>
+          </a>
+          <div class="hidden md:flex items-center gap-8">
+            <a href="#services" class="hover:text-brand-peach transition"
+              >Services</a
+            >
+            <a href="#approach" class="hover:text-brand-peach transition"
+              >Approach</a
+            >
+            <a href="#outcomes" class="hover:text-brand-peach transition"
+              >Outcomes</a
+            >
+            <a href="#contact" class="hover:text-brand-peach transition"
+              >Contact</a
+            >
+          </div>
+          <div class="flex items-center gap-3">
+            <a
+              href="#contact"
+              class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium ring-1 ring-neutral-border hover:ring-brand-peach hover:shadow-soft transition"
+            >
+              Talk to Us
+              <svg width="16" height="16" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M14 3l1.29 1.29L8.41 11H21v2H8.41l6.88 6.71L14 21l-9-9z"
+                />
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative pt-28 md:pt-36 overflow-hidden">
+      <!-- blurred peach circle -->
+      <div
+        class="absolute -top-24 -right-24 w-[40rem] h-[40rem] rounded-full bg-brand-peach/40 blur-3xl"
+      ></div>
+      <div class="noise"></div>
+
+      <div
+        class="mx-auto max-w-7xl px-6 grid md:grid-cols-12 gap-10 items-center"
+      >
+        <!-- Hero copy -->
+        <div class="md:col-span-7">
+          <div
+            class="inline-flex items-center gap-2 rounded-full bg-brand-peach px-3 py-1.5 text-sm mb-5 ring-1 ring-brand-dark/10"
+          >
+            <span
+              class="h-2 w-2 rounded-full bg-brand-dark animate-pulse"
+            ></span>
+            Building wealth with wisdom
+          </div>
+          <h1
+            class="text-4xl md:text-6xl font-semibold leading-[1.1] hero-title"
+          >
+            Financial literacy that’s
+            <span class="text-brand-peach">culturally relevant</span>,
+            actionable, and empowering.
+          </h1>
+          <p
+            class="mt-5 text-brand-dark/80 text-lg md:text-xl max-w-2xl hero-copy"
+          >
+            EverythingStella helps individuals and businesses across Africa and
+            the diaspora simplify money, spark transformation, and scale impact
+            through education, digital content, coaching, and trusted advisory.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3 hero-cta">
+            <a
+              href="#services"
+              class="inline-flex items-center justify-center rounded-xl bg-brand-dark text-white px-5 py-3 font-medium hover:bg-brand-darkHover transition"
+              >Explore Services</a
+            >
+            <a
+              href="#contact"
+              class="inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium ring-1 ring-neutral-border hover:ring-brand-peach hover:shadow-soft transition"
+              >Book a Call</a
+            >
+          </div>
+          <div
+            class="mt-10 grid grid-cols-3 max-w-md text-sm text-brand-dark/70 border-y border-neutral-border py-4 hero-stats"
+          >
+            <div class="text-center">
+              <div class="font-semibold text-brand-dark">10k+</div>
+              Learners
+            </div>
+            <div class="text-center">
+              <div class="font-semibold text-brand-dark">200+</div>
+              Businesses
+            </div>
+            <div class="text-center">
+              <div class="font-semibold text-brand-dark">20+</div>
+              Countries
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero collage images -->
+        <div class="md:col-span-5">
+          <div class="relative h-[520px]">
+            <div
+              class="absolute -inset-6 bg-gradient-to-br from-brand-peach/60 to-transparent rounded-3xl blur-2xl"
+            ></div>
+            <div class="relative grid grid-cols-2 gap-4 h-full">
+              <figure
+                class="col-span-1 rounded-3xl overflow-hidden ring-1 ring-neutral-border shadow-soft hero-img"
+                data-float="4"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop"
+                  alt="Coaching session reviewing budgets"
+                  class="w-full h-full img-cover"
+                  loading="eager"
+                  decoding="async"
+                />
+              </figure>
+              <div class="col-span-1 grid grid-rows-2 gap-4">
+                <figure
+                  class="rounded-3xl overflow-hidden ring-1 ring-neutral-border shadow-soft hero-img"
+                  data-float="-5"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1664575600796-ffa828c5cb6e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGVudHJlcHJlbmV1cnxlbnwwfHwwfHx8MA%3D%3D"
+                    alt="Entrepreneur planning cashflow"
+                    class="w-full h-full img-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <figure
+                  class="rounded-3xl overflow-hidden ring-1 ring-neutral-border shadow-soft hero-img"
+                  data-float="6"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop"
+                    alt="Team learning with culturally relevant content"
+                    class="w-full h-full img-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work in Action image strip -->
+    <section class="py-12">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <img
+            class="rounded-2xl ring-1 ring-neutral-border img-cover h-36 w-full action-img"
+            alt="Workshop group"
+            src="https://images.unsplash.com/photo-1552581234-26160f608093?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8d29ya3Nob3B8ZW58MHx8MHx8fDA%3D"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            class="rounded-2xl ring-1 ring-neutral-border img-cover h-36 w-full action-img"
+            alt="One-on-one advisory"
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            class="rounded-2xl ring-1 ring-neutral-border img-cover h-36 w-full action-img"
+            alt="Content production"
+            src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            class="rounded-2xl ring-1 ring-neutral-border img-cover h-36 w-full action-img"
+            alt="Community speaking"
+            src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200&auto=format&fit=crop"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="founder" class="py-18 md:py-24">
+      <div
+        class="mx-auto max-w-7xl px-6 grid md:grid-cols-12 gap-10 items-center founder-card"
+      >
+        <!-- photo -->
+        <div class="md:col-span-4">
+          <figure
+            class="rounded-3xl overflow-hidden ring-1 ring-neutral-border shadow-soft"
+          >
+            <!-- Replace ./founder.jpg with final high‑res portrait -->
+            <img
+              src="./stella_image.jpeg"
+              alt="Stella – Founder & Lead Coach"
+              class="w-full h-full img-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </div>
+        <!-- bio -->
+        <div class="md:col-span-8">
+          <h2 class="text-3xl md:text-4xl font-semibold">Meet Our Founder</h2>
+          <p class="mt-3 text-brand-dark/80 leading-relaxed">
+            <strong
+              >Stella
+              Uwaechue&nbsp;ACA&nbsp;•&nbsp;MSc&nbsp;•&nbsp;ACIPM&nbsp;•&nbsp;ANIMN&nbsp;•&nbsp;ANIPR&nbsp;•&nbsp;FIMC</strong
+            >
+            is an investor‑relations professional and financial‑literacy
+            advocate with hands‑on experience across banking, investment banking
+            and tech start‑ups. She holds a Distinction
+            MSc&nbsp;(Media & Communication, Pan‑Atlantic University), a
+            First‑Class BSc&nbsp;(Public Administration, OAU), and a Distinction
+            OND&nbsp;(Business Administration, YABATECH).
+          </p>
+          <p class="mt-3 text-brand-dark/80">
+            An international event host and moderator, Stella inspires audiences
+            through Doyenne Hangout masterclasses,
+            <em>The&nbsp;Stellar&nbsp;Life&nbsp;Show</em> on YouTube and the
+            <em>Stella’s Musings</em> podcast—delivering bold thought leadership
+            on finance, career growth and personal transformation.
+          </p>
+          <!-- social handles -->
+          <div class="mt-6 flex items-center gap-4">
+            <a
+              href="https://www.linkedin.com/in/stellaobi"
+              target="_blank"
+              aria-label="LinkedIn"
+              class="h-10 w-10 rounded-xl bg-brand-peach/20 flex items-center justify-center ring-1 ring-brand-peach/40 hover:ring-brand-peach transition"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                class="text-brand-dark"
+              >
+                <path
+                  fill="currentColor"
+                  d="M4 3a2 2 0 1 0 0 4a2 2 0 0 0 0-4M3 8h2v13H3zm4 0h2v13H7zm1-5a1 1 0 1 1 0 2a1 1 0 0 1 0-2m5 5h2v2.2c.7-1.1 2-2.2 4-2.2c3 0 5 2 5 6v7h-2v-7c0-2-1-3-3-3s-3 1-3 3v7h-2z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://twitter.com/stellaobi"
+              target="_blank"
+              aria-label="X / Twitter"
+              class="h-10 w-10 rounded-xl bg-brand-peach/20 flex items-center justify-center ring-1 ring-brand-peach/40 hover:ring-brand-peach transition"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                class="text-brand-dark"
+              >
+                <path
+                  fill="currentColor"
+                  d="M22 5.924a8.5 8.5 0 0 1-2.357.646a4.114 4.114 0 0 0 1.804-2.27a8.194 8.194 0 0 1-2.605.983A4.13 4.13 0 0 0 11.064 8.13a11.704 11.704 0 0 1-8.519-4.3a4.129 4.129 0 0 0 1.278 5.507A4.074 4.074 0 0 1 2 8.691v.051a4.132 4.132 0 0 0 3.309 4.043a4.087 4.087 0 0 1-1.857.07a4.135 4.135 0 0 0 3.857 2.861A8.29 8.29 0 0 1 2 18.407a11.688 11.688 0 0 0 6.29 1.842c7.547 0 11.675-6.155 11.675-11.48c0-.175-.006-.349-.015-.522A8.18 8.18 0 0 0 22 5.924Z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/stellaobi"
+              target="_blank"
+              aria-label="Instagram"
+              class="h-10 w-10 rounded-xl bg-brand-peach/20 flex items-center justify-center ring-1 ring-brand-peach/40 hover:ring-brand-peach transition"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                class="text-brand-dark"
+              >
+                <path
+                  fill="currentColor"
+                  d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm8 2a1 1 0 1 1 0 2a1 1 0 0 1 0-2m-5 2a5 5 0 1 1 0 10a5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6a3 3 0 0 0 0-6"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services section -->
+    <section id="services" class="py-18 md:py-24 bg-neutral-wash">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="max-w-2xl">
+          <h2 class="text-3xl md:text-4xl font-semibold">What we do</h2>
+          <p class="mt-3 text-brand-dark/80">
+            Programs and advisory built for real lives and real
+            businesses—clear, practical, and culturally grounded.
+          </p>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-12 gap-6">
+          <!-- Card 1 -->
+          <div
+            class="md:col-span-6 service-card overflow-hidden rounded-2xl ring-1 ring-neutral-border bg-white shadow-soft"
+          >
+            <div class="h-40 w-full">
+              <img
+                class="w-full h-full img-cover"
+                src="https://images.unsplash.com/photo-1553729784-e91953dec042?q=80&w=1600&auto=format&fit=crop"
+                alt="Financial literacy course session"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3">
+                <div
+                  class="h-10 w-10 rounded-xl bg-brand-peach/20 flex items-center justify-center ring-1 ring-brand-peach/40"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    class="text-brand-dark"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M12 2L2 7l10 5l10-5zm0 7L2 4v13h20V4z"
+                    />
+                  </svg>
+                </div>
+                <h3 class="font-semibold text-lg">
+                  Financial Literacy Courses & Coaching
+                </h3>
+              </div>
+              <p class="mt-3 text-brand-dark/80">
+                Structured learning and hands-on coaching to build habits that
+                stick—from budgeting and debt to investing and business finance.
+              </p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div
+            class="md:col-span-6 service-card overflow-hidden rounded-2xl ring-1 ring-neutral-border bg-white shadow-soft"
+          >
+            <div class="h-40 w-full">
+              <img
+                class="w-full h-full img-cover"
+                src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?q=80&w=1600&auto=format&fit=crop"
+                alt="Digital content studio"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3">
+                <div
+                  class="h-10 w-10 rounded-xl bg-brand-peach/20 flex items-center justify-center ring-1 ring-brand-peach/40"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    class="text-brand-dark"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M3 4h18v2H3zm0 6h12v2H3zm0 6h18v2H3z"
+                    />
+                  </svg>
+                </div>
+                <h3 class="font-semibold text-lg">
+                  Digital Content & Media Products
+                </h3>
+              </div>
+              <p class="mt-3 text-brand-dark/80">
+                Video, newsletters, and toolkits that make complex money topics
+                simple, local, and actionable.
+              </p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div
+            class="md:col-span-6 service-card overflow-hidden rounded-2xl ring-1 ring-neutral-border bg-white shadow-soft"
+          >
+            <div class="h-40 w-full">
+              <img
+                class="w-full h-full img-cover"
+                src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=1600&auto=format&fit=crop"
+                alt="Advisory for SMEs"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3">
+                <div
+                  class="h-10 w-10 rounded-xl bg-brand-peach/20 flex items-center justify-center ring-1 ring-brand-peach/40"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    class="text-brand-dark"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M12 12c2.2 0 4-1.8 4-4S14.2 4 12 4S8 5.8 8 8s1.8 4 4 4m0 2c-3.3 0-10 1.7-10 5v1h20v-1c0-3.3-6.7-5-10-5"
+                    />
+                  </svg>
+                </div>
+                <h3 class="font-semibold text-lg">
+                  Personal & Business Financial Advisory
+                </h3>
+              </div>
+              <p class="mt-3 text-brand-dark/80">
+                Goal-based advice for individuals and SMEs—cashflow, pricing,
+                growth, and risk aligned to your context.
+              </p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div
+            class="md:col-span-6 service-card overflow-hidden rounded-2xl ring-1 ring-neutral-border bg-white shadow-soft"
+          >
+            <div class="h-40 w-full">
+              <img
+                class="w-full h-full img-cover"
+                src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1600&auto=format&fit=crop"
+                alt="Publishing and brand communications"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3">
+                <div
+                  class="h-10 w-10 rounded-xl bg-brand-peach/20 flex items-center justify-center ring-1 ring-brand-peach/40"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    class="text-brand-dark"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M5 3h14v2H5zm0 4h10v2H5zm0 4h14v2H5zm0 4h10v2H5z"
+                    />
+                  </svg>
+                </div>
+                <h3 class="font-semibold text-lg">
+                  Publishing, Consulting & Brand Communications
+                </h3>
+              </div>
+              <p class="mt-3 text-brand-dark/80">
+                We craft clear narratives and educational products that build
+                trust and drive financial behavior change.
+              </p>
+            </div>
+          </div>
+          <!-- Card 5 full width -->
+          <div
+            class="md:col-span-12 service-card overflow-hidden rounded-2xl ring-1 ring-neutral-border bg-white shadow-soft"
+          >
+            <div class="h-56 w-full">
+              <img
+                class="w-full h-full img-cover"
+                src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1800&auto=format&fit=crop"
+                alt="Community programs and speaking"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3">
+                <div
+                  class="h-10 w-10 rounded-xl bg-brand-peach/20 flex items-center justify-center ring-1 ring-brand-peach/40"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    class="text-brand-dark"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7m0 9.5A2.5 2.5 0 1 0 12 6a2.5 2.5 0 0 0 0 5.5Z"
+                    />
+                  </svg>
+                </div>
+                <h3 class="font-semibold text-lg">
+                  Community Programs & Speaking Engagements
+                </h3>
+              </div>
+              <p class="mt-3 text-brand-dark/80">
+                From workplace trainings to community events—we bring money
+                conversations closer to home and culture.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Approach section -->
+    <section id="approach" class="py-18 md:py-24">
+      <div
+        class="mx-auto max-w-7xl px-6 grid md:grid-cols-12 gap-10 items-start"
+      >
+        <div class="md:col-span-5">
+          <h2 class="text-3xl md:text-4xl font-semibold">
+            Our mission & approach
+          </h2>
+          <p class="mt-3 text-brand-dark/80">
+            Our mission is to make financial literacy culturally relevant,
+            actionable, and empowering—so people can change their money story
+            with confidence.
+          </p>
+          <img
+            src="https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1400&auto=format&fit=crop"
+            alt="Facilitator leading a finance workshop"
+            class="mt-6 rounded-2xl ring-1 ring-neutral-border img-cover h-56 w-full approach-img"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="md:col-span-7">
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div
+              class="rounded-2xl ring-1 ring-neutral-border p-6 bg-white shadow-soft approach-card"
+            >
+              <h4 class="font-semibold">Context-first</h4>
+              <p class="mt-2 text-brand-dark/80">
+                We teach and advise with local realities in mind—currency
+                shifts, seasonality, and everyday constraints.
+              </p>
+            </div>
+            <div
+              class="rounded-2xl ring-1 ring-neutral-border p-6 bg-white shadow-soft approach-card"
+            >
+              <h4 class="font-semibold">Action over theory</h4>
+              <p class="mt-2 text-brand-dark/80">
+                Clear playbooks, templates, and weekly actions so progress is
+                visible and sustainable.
+              </p>
+            </div>
+            <div
+              class="rounded-2xl ring-1 ring-neutral-border p-6 bg-white shadow-soft approach-card"
+            >
+              <h4 class="font-semibold">Human coaching</h4>
+              <p class="mt-2 text-brand-dark/80">
+                Empathy and accountability—because habits change with support,
+                not just information.
+              </p>
+            </div>
+            <div
+              class="rounded-2xl ring-1 ring-neutral-border p-6 bg-white shadow-soft approach-card"
+            >
+              <h4 class="font-semibold">Trusted advisory</h4>
+              <p class="mt-2 text-brand-dark/80">
+                Goal-aligned advice for individuals and SMEs—cashflow, pricing,
+                runway, and risk.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcomes section -->
+    <section id="outcomes" class="py-18 md:py-24 bg-neutral-wash">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="max-w-2xl">
+          <h2 class="text-3xl md:text-4xl font-semibold">
+            Results that matter
+          </h2>
+          <p class="mt-3 text-brand-dark/80">
+            Practical outcomes we target with every engagement.
+          </p>
+        </div>
+        <div class="mt-10 grid md:grid-cols-12 gap-6">
+          <div class="md:col-span-4 outcome-card">
+            <div
+              class="h-full rounded-2xl bg-white p-6 ring-1 ring-neutral-border"
+            >
+              <div class="text-2xl font-semibold">Strong cashflow</div>
+              <p class="mt-2 text-brand-dark/80">
+                Clear budgets, buffers, and payment rhythms that reduce stress.
+              </p>
+            </div>
+          </div>
+          <div class="md:col-span-4 outcome-card">
+            <div
+              class="h-full rounded-2xl bg-white p-6 ring-1 ring-neutral-border"
+            >
+              <div class="text-2xl font-semibold">Smarter investing</div>
+              <p class="mt-2 text-brand-dark/80">
+                Goal-based choices and risk awareness, not hype.
+              </p>
+            </div>
+          </div>
+          <div class="md:col-span-4 outcome-card">
+            <div
+              class="h-full rounded-2xl bg-white p-6 ring-1 ring-neutral-border"
+            >
+              <div class="text-2xl font-semibold">Business clarity</div>
+              <p class="mt-2 text-brand-dark/80">
+                Pricing, runway, and profitability insights you can act on.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA with image background -->
+        <div class="mt-10 relative overflow-hidden rounded-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2000&auto=format&fit=crop"
+            alt="Collaborative planning session"
+            class="absolute inset-0 w-full h-full img-cover"
+            loading="lazy"
+            decoding="async"
+          />
+          <div
+            class="relative bg-brand-dark/80 text-white p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6"
+          >
+            <div>
+              <h3 class="text-2xl font-semibold">
+                Ready to transform your money story?
+              </h3>
+              <p class="text-white/80 mt-1">
+                Let’s map your next best step—personal or business.
+              </p>
+            </div>
+            <a
+              href="#contact"
+              class="inline-flex items-center justify-center rounded-xl bg-white text-brand-dark px-5 py-3 font-medium hover:bg-white/90 transition"
+              >Start the conversation</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact section -->
+    <section id="contact" class="py-18 md:py-24">
+      <div
+        class="mx-auto max-w-7xl px-6 grid md:grid-cols-12 gap-10 items-center"
+      >
+        <div class="md:col-span-7">
+          <h2 class="text-3xl md:text-4xl font-semibold">Contact</h2>
+          <p class="mt-3 text-brand-dark/80 max-w-2xl">
+            Have a question, need advisory, or want a program for your team or
+            community? We’d love to help.
+          </p>
+          <div class="mt-6 grid sm:grid-cols-2 gap-4">
+            <!-- Phone card -->
+            <a
+              href="tel:+2348081837283"
+              class="flex items-center gap-3 rounded-2xl ring-1 ring-neutral-border p-4 hover:ring-brand-peach hover:shadow-soft transition"
+            >
+              <div
+                class="h-10 w-10 rounded-xl bg-brand-peach/20 flex items-center justify-center ring-1 ring-brand-peach/40"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  class="text-brand-dark"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.1.37 2.29.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.07 21 3 13.93 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.29.2 2.48.57 3.58a1 1 0 0 1-.24 1.01z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <div class="text-sm text-brand-dark/60">Phone</div>
+                <div class="font-semibold">+234 808 183 7283</div>
+              </div>
+            </a>
+            <!-- WhatsApp card -->
+            <a
+              href="https://wa.me/2348081837283"
+              class="flex items-center gap-3 rounded-2xl ring-1 ring-neutral-border p-4 hover:ring-brand-peach hover:shadow-soft transition"
+            >
+              <div
+                class="h-10 w-10 rounded-xl bg-brand-peach/20 flex items-center justify-center ring-1 ring-brand-peach/40"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  class="text-brand-dark"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M12 2A10 10 0 0 0 2 12a9.9 9.9 0 0 0 1.47 5.23L2 22l4.9-1.44A9.9 9.9 0 0 0 12 22a10 10 0 0 0 0-20m5.17 14.33c-.22.62-1.29 1.16-1.78 1.23c-.47.06-1.08.09-1.75-.11c-.4-.12-.92-.3-1.59-.58c-2.79-1.2-4.61-3.99-4.75-4.18c-.14-.19-1.13-1.5-1.13-2.86s.71-2.03.96-2.31c.25-.28.55-.35.74-.35h.54c.17 0 .41-.07.64.49c.24.59.82 2.03.89 2.18c.07.15.11.33.02.52c-.09.19-.14.31-.29.48c-.14.17-.3.39-.43.53c-.14.14-.29.3-.12.58c.17.28.77 1.27 1.66 2.06c1.15 1.02 2.12 1.34 2.41 1.49c.29.15.46.13.63-.08c.17-.21.72-.85.92-1.14c.19-.28.39-.24.64-.14c.25.1 1.58.74 1.86.88c.28.14.46.21.53.33c.06.12.06.68-.16 1.30Z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <div class="text-sm text-brand-dark/60">WhatsApp</div>
+                <div class="font-semibold">Chat with us</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- Contact sidebar card -->
+        <div class="md:col-span-5">
+          <div
+            class="rounded-3xl ring-1 ring-neutral-border p-6 bg-white shadow-soft"
+          >
+            <h3 class="font-semibold text-lg">Let’s map your next step</h3>
+            <p class="mt-2 text-brand-dark/80">
+              Tell us about your goals and context—individual or business—and
+              we’ll propose a tailored path.
+            </p>
+            <ul class="mt-4 space-y-3 text-brand-dark/80">
+              <li class="flex items-start gap-3">
+                <span class="mt-1 h-2 w-2 rounded-full bg-brand-dark"></span
+                >Personal budgeting, saving & investing
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 h-2 w-2 rounded-full bg-brand-dark"></span>SME
+                cashflow, pricing & profitability
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 h-2 w-2 rounded-full bg-brand-dark"></span
+                >Team trainings & community programs
+              </li>
+            </ul>
+            <a
+              href="tel:+2348081837283"
+              class="mt-6 inline-flex items-center justify-center w-full rounded-xl bg-brand-dark text-white px-5 py-3 font-medium hover:bg-brand-darkHover transition"
+              >Call +234 808 183 7283</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-neutral-border py-8">
+      <div
+        class="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-4"
+      >
+        <p class="text-sm text-brand-dark/70">
+          © <span id="year"></span> EverythingStella Ltd. All rights reserved.
+        </p>
+        <nav class="flex items-center gap-6 text-sm">
+          <a href="#services" class="hover:text-brand-peach">Services</a>
+          <a href="#approach" class="hover:text-brand-peach">Approach</a>
+          <a href="#outcomes" class="hover:text-brand-peach">Outcomes</a>
+          <a href="#contact" class="hover:text-brand-peach">Contact</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- JavaScript: nav scroll + GSAP reveals -->
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        // set current year in footer
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Nav backdrop on scroll
+        const nav = document.getElementById("nav");
+        const toggleNav = () => {
+          const scrolled = window.scrollY > 8;
+          nav.classList.toggle("backdrop-blur-xl", scrolled);
+          nav.classList.toggle("bg-white/70", scrolled);
+          nav.classList.toggle("shadow-soft", scrolled);
+        };
+        toggleNav();
+        window.addEventListener("scroll", toggleNav, { passive: true });
+
+        // GSAP
+        if (window.gsap) {
+          gsap.registerPlugin(ScrollTrigger);
+          // Hero entrance
+          gsap.from(".hero-title", {
+            y: 24,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out",
+          });
+          gsap.from(".hero-copy", {
+            y: 18,
+            opacity: 0,
+            duration: 0.8,
+            delay: 0.1,
+            ease: "power2.out",
+          });
+          gsap.from(".hero-cta > *", {
+            y: 14,
+            opacity: 0,
+            duration: 0.7,
+            delay: 0.2,
+            stagger: 0.08,
+            ease: "power2.out",
+          });
+          gsap.from(".hero-stats > *", {
+            y: 10,
+            opacity: 0,
+            duration: 0.6,
+            delay: 0.3,
+            stagger: 0.05,
+            ease: "power2.out",
+          });
+
+          // Floating hero images
+          document.querySelectorAll(".hero-img").forEach((el, i) => {
+            const amt = Number(el.dataset.float || 4);
+            gsap.to(el, {
+              y: amt,
+              duration: 3 + i,
+              repeat: -1,
+              yoyo: true,
+              ease: "sine.inOut",
+            });
+            gsap.from(el, {
+              opacity: 0,
+              y: 24,
+              duration: 0.9,
+              delay: 0.1 * i,
+              ease: "power2.out",
+            });
+          });
+
+          // reveal helper
+          const reveal = (selector, opts = {}) => {
+            gsap.utils.toArray(selector).forEach((el) => {
+              gsap.from(el, {
+                opacity: 0,
+                y: 24,
+                duration: 0.8,
+                ease: "power2.out",
+                scrollTrigger: { trigger: el, start: "top 85%" },
+                ...opts,
+              });
+            });
+          };
+          reveal(".service-card");
+          reveal(".approach-card");
+          reveal(".outcome-card");
+          reveal(".action-img", { y: 16 });
+          reveal(".approach-img", { y: 16 });
+        }
+      });
+    </script>
+  </body>
+</html>
